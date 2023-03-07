@@ -1,7 +1,6 @@
 call plug#begin(stdpath('data'))
 
 Plug 'preservim/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'sheerun/vim-polyglot'
 Plug 'Raimondi/delimitMate'
 Plug 'vim-airline/vim-airline'
@@ -12,14 +11,31 @@ Plug 'ervandew/supertab'
 
 call plug#end()
 
+filetype plugin on
 inoremap jk <Esc>
 
+" Buffer stuff
+
+" Lists buffers and asks for a number
+nnoremap gb :buffers<CR>:buffer<Space>
+map <s-Tab> :bp<CR>
+map <Tab> :bn<CR>
+
+
+
+" Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+let mapleader = "<Space>"
 
 " nerdtree
-map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinPos = "right"
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeFocus<CR>
 
 " true colours
 colorscheme minimalist
@@ -45,9 +61,20 @@ au BufNewFile,BufRead *.py,*.r,*.m,*.jl,*.do
 
 
 set encoding=utf-8
+" airline
 
-" air-line
-let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+   let g:airline_symbols = {}
+endif
+
+let g:airline_symbols_ascii = 1
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+
 let g:airline_theme = 'jellybeans'
 let g:airline#extensions#tabline#enabled = 1
 
@@ -55,11 +82,6 @@ let g:airline#extensions#tabline#enabled = 1
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-"Enable folding with the spacebar
-nnoremap <space> za
-
-" open files with ctrl-p
-nnoremap <c-p> :Files<cr>
 
 syntax on
 
@@ -67,6 +89,11 @@ set clipboard=unnamed
 set noswapfile
 set nu rnu
 
-" run code
+set backspace=indent,eol,start " let backspace delete over lines
+set autoindent " enable auto indentation of lines
+set smartindent " allow vim to best-effort guess the indentation
+set pastetoggle=<F2> " enable paste mode
 
-nnoremap <C-`> :te<enter>
+" terminal
+nnoremap ` :te<enter>
+tnoremap <Esc> <C-\><C-n>
