@@ -17,6 +17,10 @@ inoremap jk <Esc>
 nnoremap j gj
 nnoremap k gk
 
+" terminal
+nnoremap ` :te<enter>
+tnoremap jk <C-\><C-n>
+
 " Buffer stuff
 
 " Lists buffers and asks for a number
@@ -97,6 +101,3 @@ set autoindent " enable auto indentation of lines
 set smartindent " allow vim to best-effort guess the indentation
 set pastetoggle=<F2> " enable paste mode
 
-" terminal
-nnoremap ` :te<enter>
-tnoremap <Esc> <C-\><C-n>
