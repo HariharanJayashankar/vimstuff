@@ -8,11 +8,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'ervandew/supertab'
+Plug 'JuliaEditorSupport/julia-vim'
 
 call plug#end()
 
 filetype plugin on
 inoremap jk <Esc>
+nnoremap j gj
+nnoremap k gk
 
 " Buffer stuff
 
