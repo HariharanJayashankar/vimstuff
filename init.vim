@@ -9,6 +9,10 @@ Plug 'vim-syntastic/syntastic'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'ervandew/supertab'
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'quarto-dev/quarto-nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'jmbuhr/otter.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 call plug#end()
 
